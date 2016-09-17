@@ -34,10 +34,14 @@ struct ngx_http_upstream_rr_peer_s {
 
     ngx_uint_t                      max_fails;
     time_t                          fail_timeout;
+ 
+#if (NGX_HTTP_UPSTREAM_CHECK)
+    ngx_uint_t                      check_index;
+#endif
 
-    ngx_uint_t                      down;          /* unsigned  down:1; */
-
-#if (NGX_HTTP_SSL)
+     ngx_uint_t                      down;          /* unsigned  down:1; */
+ 
+ #if (NGX_HTTP_SSL)
     void                           *ssl_session;
     int                             ssl_session_len;
 #endif
